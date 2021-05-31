@@ -21,7 +21,7 @@ namespace JobMarket.Tests
         public void Can_publish_a_valid_ad()
         {
             _jobAd.SetTitle(JobAdTitle.FromString("Test ad"));
-            _jobAd.UpdateText(JobAdText.FromString("Please buy my stuff"));
+            _jobAd.UpdateText(JobAdText.FromString("Job Description"));
             _jobAd.UpdateSalary(
                 Salary.FromDecimal(100.10m, "EUR", new FakeCurrencyLookup()));
 
@@ -34,7 +34,7 @@ namespace JobMarket.Tests
         [Fact]
         public void Cannot_publish_without_title()
         {
-            _jobAd.UpdateText(JobAdText.FromString("Please buy my stuff"));
+            _jobAd.UpdateText(JobAdText.FromString("Job Description"));
             _jobAd.UpdateSalary(
                 Salary.FromDecimal(100.10m, "EUR", new FakeCurrencyLookup()));
 
@@ -52,19 +52,19 @@ namespace JobMarket.Tests
         }
 
         [Fact]
-        public void Cannot_publish_without_price()
+        public void Cannot_publish_without_salary()
         {
             _jobAd.SetTitle(JobAdTitle.FromString("Test ad"));
-            _jobAd.UpdateText(JobAdText.FromString("Please buy my stuff"));
+            _jobAd.UpdateText(JobAdText.FromString("Job Description"));
 
             Assert.Throws<InvalidEntityStateException>(() => _jobAd.RequestToPublish());
         }
 
         [Fact]
-        public void Cannot_publish_with_zero_price()
+        public void Cannot_publish_with_zero_salary()
         {
             _jobAd.SetTitle(JobAdTitle.FromString("Test ad"));
-            _jobAd.UpdateText(JobAdText.FromString("Please buy my stuff"));
+            _jobAd.UpdateText(JobAdText.FromString("Job Description"));
             _jobAd.UpdateSalary(
                 Salary.FromDecimal(0.0m, "EUR", new FakeCurrencyLookup()));
 
