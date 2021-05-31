@@ -22,7 +22,8 @@ namespace JobMarket.Domain
                 .Replace("<b>", "**")
                 .Replace("</b>", "**");
 
-            var value = Regex.Replace(supportedTagsReplaced, "<.*?>", string.Empty);
+            var value = Regex.Replace(supportedTagsReplaced, 
+                "<.*?>", string.Empty);
             CheckValidity(value);
 
             return new JobAdTitle(value);

@@ -25,7 +25,7 @@ namespace JobMarket.API
             return Ok();
         }
 
-        [Route("name")]
+        [Route("title")]
         [HttpPut]
         public async Task<IActionResult> Put(V1.SetTitle request)
         {
